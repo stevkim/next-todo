@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import NoteForm from './components/form';
 
 async function getNotes() {
 	const result = await fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -13,6 +14,7 @@ export default async function NotesPage() {
 	return (
 		<div>
 			<h1 className="text-2xl">Notes</h1>
+			<NoteForm />
 			<div>
 				{notes.map((note) => {
 					return (
