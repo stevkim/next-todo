@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import './globals.css';
 import type { Metadata } from 'next';
+import NavBar from './components/navbar';
 
 export const metadata: Metadata = {
 	title: 'Todos',
@@ -15,10 +16,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="">
-				<nav className="flex gap-4">
-					<Link href={'/'}>Home</Link>
-					<Link href={'/notes'}>Notes</Link>
-				</nav>
+				<NavBar />
 				{children}
 			</body>
 		</html>
