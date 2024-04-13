@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Editor from './components/editor';
 
 export default function Home() {
 	return (
@@ -13,6 +14,7 @@ export default function Home() {
 					className="h-auto w-full"
 				/>
 			</div>
+			<Editor />
 		</main>
 	);
 }
