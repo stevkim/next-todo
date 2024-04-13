@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import NoteForm from './components/form';
+import Note from './components/note';
 
 async function getNotes() {
 	const response = await fetch('http://localhost:3000/api/notes', {
@@ -29,21 +29,5 @@ export default async function NotesPage() {
 				})}
 			</div>
 		</div>
-	);
-}
-
-function Note({ note }: any) {
-	const { title, id, body } = note;
-
-	return (
-		<Link
-			href={`notes/${id}`}
-			className="p-2 flex gap-2"
-		>
-			<h2 className="mr-2 font-semibold">
-				{id}.{' ' + title}
-			</h2>
-			<p>{body}</p>
-		</Link>
 	);
 }

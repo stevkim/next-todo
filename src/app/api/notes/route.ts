@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { prisma } from '@/db/client';
+import prisma from '@/db/client';
 import { revalidateTag } from 'next/cache';
 
 export async function GET(request: NextRequest) {
