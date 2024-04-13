@@ -2,10 +2,13 @@ import Link from 'next/link';
 import NoteForm from './components/form';
 
 async function getNotes() {
-	const result = await fetch('https://jsonplaceholder.typicode.com/posts', {
-		cache: 'no-store',
+	const response = await fetch('http://localhost:3000/api/notes', {
+		next: { tags: ['notes'] },
 	});
-	return (await result.json()) as any[];
+
+	const result = await response.json();
+
+	return result.data as any[];
 }
 
 export default async function NotesPage() {
@@ -30,15 +33,17 @@ export default async function NotesPage() {
 }
 
 function Note({ note }: any) {
-	const { title, id } = note;
+	const { title, id, body } = note;
 
 	return (
 		<Link
-			href={`notes/${note.id}`}
-			className="p-2 flex"
+			href={`notes/${id}`}
+			className="p-2 flex gap-2"
 		>
-			<h2 className="mr-2">{id}.</h2>
-			<p>{title}</p>
+			<h2 className="mr-2 font-semibold">
+				{id}.{' ' + title}
+			</h2>
+			<p>{body}</p>
 		</Link>
 	);
 }

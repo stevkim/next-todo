@@ -1,6 +1,8 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
+import { navigate } from '@/app/actions/redirect';
+
 export default function NoteForm() {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
@@ -15,9 +17,13 @@ export default function NoteForm() {
 			headers: {
 				'content-type': 'application/json',
 			},
+			next: {
+				tags: ['notes'],
+			},
 		});
 		setTitle('');
 		setBody('');
+		navigate('/notes');
 	};
 
 	return (
