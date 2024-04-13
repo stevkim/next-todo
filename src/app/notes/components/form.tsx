@@ -9,7 +9,13 @@ export default function NoteForm() {
 		e.preventDefault();
 		const data = { title, body };
 
-		console.log(data);
+		const response = await fetch('http://localhost:3000/api/notes', {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'content-type': 'application/json',
+			},
+		});
 		setTitle('');
 		setBody('');
 	};
